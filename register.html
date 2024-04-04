@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Halaman Registrasi</title>
+    <style>
+        body {
+            background-image: url('img/galeri4.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+        }
+        
+        .container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+        }
+        
+        .card-title {
+            color: #333;
+        }
+        
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        label {
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Registrasi</h3>
+                        <form action="index.html" onsubmit="register(event)">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Masukkan username">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Masukkan email">
+                            </div>
+                            <div class="form-group">
+                                <label for="no">No.Handphone</label>
+                                <input type="text" class="form-control" id="no" placeholder="Masukkan No.HP">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Masukkan password">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Konfirmasi Password</label>
+                                <input type="password" class="form-control" id="confirm-password" placeholder="Konfirmasi password">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function register(event) {
+            event.preventDefault();
+
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var no = document.getElementById("no").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+
+            if (username === "" || email === "" || no === "" || password === "" || confirmPassword === "") {
+                alert("Harap isi semua form");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Password tidak sama");
+                return;
+            }
+
+            sessionStorage.setItem("registerUsername", username);
+            sessionStorage.setItem("registerPassword", password);
+
+            alert("Registrasi Berhasil!");
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

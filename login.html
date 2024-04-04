@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label>Username</label><br>
+            <input type="text" id="username"><br>
+            <label>Password</label><br>
+            <input type="password" id="password"><br>
+            <button type="button" onclick="login()">Log in</button>
+            <p> Belum punya akun?
+                <a href="register.html">Register di sini</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "" || password === "") {
+                alert("Harap isi form ini");
+                return;
+            }
+
+            var registerUsername = sessionStorage.getItem("registerUsername");
+            var registerPassword = sessionStorage.getItem("registerPassword");
+
+            if (username === registerUsername && password === registerPassword) {
+                sessionStorage.setItem("loggedIn", true);
+                alert("Login berhasil!");
+                window.location.href = "index.html";
+            } else {
+                alert("Username atau password anda salah");
+            }
+        }
+    </script>
+</body>
+
+</html>
